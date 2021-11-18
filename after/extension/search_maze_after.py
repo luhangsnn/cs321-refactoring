@@ -188,10 +188,6 @@ class SearchMaze:
                     path.append((row, col))
         return path
 
-    def background_music(self, filename):
-        """plays tetris music in the background"""
-        playsound(filename)
-
     def start_game(self, grid_file):
         """reads a maze file and sets the search parameters"""
 
@@ -217,17 +213,20 @@ class SearchMaze:
         # print the number of steps taken to find the path
         print("number of steps taken to reach answer:", self.steps)
 
+def background_music():
+        """plays tetris music in the background"""
+        playsound('Tetris.mp3')
 
 def main():
     """the main function where the game events take place"""
     sm = SearchMaze()
 
     # play bg music and iterates the process
-    # p = Process(target=sm.background_music, args=('Tetris.mp3'))
-    # p.start()
+    p = Process(target=background_music, args=())
+    p.start()
 
     sm.start_game("maze2.txt")
-    # p.terminate()
+    p.terminate()
 
 
 if __name__ == "__main__":
