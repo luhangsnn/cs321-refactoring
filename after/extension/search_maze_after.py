@@ -7,16 +7,16 @@ from multiprocessing import Process
 class SearchMaze:
     """SearchMaze Game class"""
 
-    def __init__(self):
+    def __init__(self, x_offset, y_offset, tile_size):
         self.turt = turtle.Turtle()
         self.window = turtle.getscreen()
         self.grid = []
         self.steps = 0
 
         # set offsets and tile size for drawing the grid
-        self.x_offset = -150
-        self.y_offset = 200
-        self.tile_size = 50
+        self.x_offset = x_offset
+        self.y_offset = y_offset
+        self.tile_size = tile_size
 
         self.window.bgcolor("slate gray")
         turtle.hideturtle()
@@ -219,7 +219,7 @@ def background_music():
 
 def main():
     """the main function where the game events take place"""
-    sm = SearchMaze()
+    sm = SearchMaze(-150, 200, 50)
 
     # play bg music and iterates the process
     p = Process(target=background_music, args=())
